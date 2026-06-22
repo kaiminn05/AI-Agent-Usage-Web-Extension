@@ -5,7 +5,9 @@ import type { ProviderId, UsageSnapshot } from "../types/usage";
 import { PROVIDER_LABELS } from "../types/usage";
 import { formatFetchedAt } from "../utils/datetime";
 import { ConnectPanel } from "./components/ConnectPanel";
+import { AppFooter } from "./components/AppFooter";
 import { ProviderCard } from "./components/ProviderCard";
+import { UpdateNotice } from "./components/UpdateNotice";
 
 const PROVIDERS: ProviderId[] = ["cursor", "chatgpt", "claude"];
 const MESSAGE_TIMEOUT_MS = 120_000;
@@ -237,6 +239,8 @@ export default function App() {
 
       {error && <div className="banner banner-error">{error}</div>}
 
+      <UpdateNotice />
+
       {loading ? (
         <p className="muted">Loading…</p>
       ) : (
@@ -252,6 +256,8 @@ export default function App() {
           ))}
         </div>
       )}
+
+      <AppFooter />
 
       {connectingProvider && (
         <ConnectPanel

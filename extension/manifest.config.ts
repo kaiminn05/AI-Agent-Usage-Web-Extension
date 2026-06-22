@@ -18,6 +18,7 @@ export default defineManifest({
     "https://chatgpt.com/*",
     "https://claude.ai/*",
     "https://api.anthropic.com/*",
+    "https://api.github.com/*",
   ],
   action: {
     default_popup: "src/popup/index.html",

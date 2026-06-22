@@ -19,7 +19,7 @@
 
 ## Install
 
-You do **not** need Node.js or npm. Download a pre-built zip from [GitHub Releases](https://github.com/<your-org-or-username>/Agent-Usage-/releases), then load it in Chrome.
+You do **not** need Node.js or npm. Download a pre-built zip from [GitHub Releases](https://github.com/kaiminn05/AI-Agent-Usage-Web-Extension/releases), then load it in Chrome.
 
 ### 1. Download & unzip
 
@@ -61,12 +61,12 @@ Done. Usage refreshes every ~60s while the popup is open, and every 5 minutes in
 ## Supported providers
 
 | | Provider | Usage shown |
-|---|----------|-------------|
-| 🖱️ | **Cursor** | Total, Auto + Composer, API % |
-| 💻 | **Codex** | 5-hour & weekly limits (via ChatGPT login) |
-| ✳️ | **Claude** | 5-hour & 7-day windows |
+|:--:|----------|-------------|
+| <img src="extension/src/assets/cursor.jpg" width="28" alt="Cursor" /> | **Cursor** | Total, Auto + Composer, API % |
+| <img src="extension/src/assets/codex.png" width="28" alt="Codex" /> | **Codex** | 5-hour & weekly limits (via ChatGPT login) |
+| <img src="extension/src/assets/claude.webp" width="28" alt="Claude" /> | **Claude** | 5-hour & 7-day windows |
 
-Numbers come from each vendor’s logged-in dashboard APIs — not official public APIs. If a site changes, an adapter may need an update.
+Numbers come from each vendor’s logged-in dashboard APIs — not official public APIs. If a site changes, install a newer release from [GitHub Releases](https://github.com/kaiminn05/AI-Agent-Usage-Web-Extension/releases); the popup checks for updates automatically.
 
 ---
 
@@ -135,7 +135,7 @@ For contributors building from source. Requires **Node.js 18+**.
 **Clone & build**
 
 ```bash
-git clone https://github.com/<your-org-or-username>/Agent-Usage-.git
+git clone https://github.com/kaiminn05/AI-Agent-Usage-Web-Extension.git
 cd Agent-Usage-/extension
 npm install
 npm run build
@@ -151,6 +151,7 @@ extension/dist
 
 ```bash
 npm run dev      # watch mode — rebuilds extension/dist
+npm run package  # build + create agent-usage-vX.Y.Z.zip for Releases
 npm run icons    # SVG → PNG icons for the manifest
 npm run lint     # ESLint
 ```
@@ -158,15 +159,37 @@ npm run lint     # ESLint
 <details>
 <summary><strong>Publish a GitHub Release (maintainers)</strong></summary>
 
+Releases 404 until you create the first one. After that, the install link in this README works.
+
+**Option A — automatic (recommended)**
+
+Push a version tag. GitHub Actions (`.github/workflows/release.yml`) builds the zip and attaches it to a new Release.
+
 ```bash
-cd extension
-npm ci
-npm run build
-cd dist
-zip -r ../../agent-usage-v0.1.0.zip .
+# Bump version in extension/manifest.config.ts and extension/src/constants/extension-meta.ts first
+git add -A
+git commit -m "Release v0.1.0"
+git push origin main
+git tag v0.1.0
+git push origin v0.1.0
 ```
 
-Upload the zip to GitHub Releases. Bump `version` in `extension/manifest.config.ts` to match the tag.
+The workflow uploads `agent-usage-v0.1.0.zip`. Tag must start with `v` (e.g. `v0.1.0`).
+
+**Option B — manual upload**
+
+```bash
+cd extension
+npm install
+npm run package
+```
+
+This creates `extension/agent-usage-v0.1.0.zip`. Then on GitHub:
+
+1. Open **Releases** → **Draft a new release**
+2. Choose tag `v0.1.0` (create new tag on publish)
+3. Attach `agent-usage-v0.1.0.zip`
+4. Click **Publish release**
 
 </details>
 

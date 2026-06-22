@@ -1,7 +1,8 @@
 .app {
-  width: 380px;
-  min-height: 420px;
+  width: 100%;
+  min-height: 100%;
   padding: 16px;
+  box-sizing: border-box;
   font-family:
     system-ui,
     -apple-system,
@@ -10,6 +11,18 @@
     sans-serif;
   color: #e8eaed;
   background: #0f1117;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  width: 380px;
+  min-height: 420px;
+  background: #0f1117;
+  color: #e8eaed;
+  overflow-x: hidden;
 }
 
 .header {
@@ -63,6 +76,48 @@
   color: #ffb4ab;
   background: #3b1f1f;
   border: 1px solid #8c4444;
+}
+
+.banner-update {
+  color: #c4e7b1;
+  background: #1e2a1f;
+  border: 1px solid #3d5c40;
+  line-height: 1.4;
+}
+
+.banner-update-link {
+  color: #8ab4f8;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.banner-update-link:hover {
+  text-decoration: underline;
+}
+
+.app-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 14px;
+  padding-top: 10px;
+  border-top: 1px solid #2a2f3a;
+  font-size: 11px;
+  color: #5f6368;
+}
+
+.app-footer-sep {
+  color: #3c4043;
+}
+
+.app-footer-link {
+  color: #8ab4f8;
+  text-decoration: none;
+}
+
+.app-footer-link:hover {
+  text-decoration: underline;
 }
 
 .btn {
