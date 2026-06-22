@@ -1,0 +1,15 @@
+---
+description: Global project standards for TARUMT Marketplace
+alwaysApply: true
+---
+
+# Global Rules
+
+- This project is TARUMT Marketplace, a second-hand marketplace for TARUMT students, lecturers, and tutors.
+- Prioritize clean, reusable, and maintainable code.
+- Avoid redundant code and duplicate logic.
+- Use meaningful names for files, variables, functions, classes, and components.
+- Keep files focused on one responsibility.
+- Reuse existing components, hooks, services, DTOs, and utilities before creating new ones.
+- Follow the project module scope: marketplace browsing, wishlist, listing, negotiation, bidding, chat, order, review, profile, report, and recommendation engine.
+- Do not overcomplicate features unless required for FYP demonstration.

@@ -1,0 +1,52 @@
+---
+description: Entity Framework Core database and entity conventions
+globs: **/{Models,Data,Repositories,Migrations}/**/*.cs
+alwaysApply: false
+---
+
+# Database Rules
+
+## Entities
+
+- Use clear entity names: `User`, `Listing`, `Offer`, `Bid`, `Order`, `Review`, `Report`.
+- Buyer and seller must both reference the same `User` entity (e.g. `BuyerId`, `SellerId` → `User`).
+- Define proper foreign keys and navigation properties for all relationships.
+- Add `CreatedAt`, `UpdatedAt`, and `Status` fields where the domain requires them.
+- Avoid duplicating data across tables unless denormalization is justified.
+
+## EF Core Conventions
+
+- Follow Entity Framework Core conventions: singular entity names, `DbSet<T>` properties, fluent or attribute configuration in `OnModelCreating`.
+- Keep database models in `Models/` — separate from DTOs used in API layers.
+- Use enums for status fields: `ListingStatus`, `OrderStatus`, `OfferStatus`, `ReportStatus`.
+
+```csharp
+// ❌ BAD — duplicate user data, string status, no audit fields
+public class Order
+{
+    public int Id { get; set; }
+    public string BuyerName { get; set; }
+    public string SellerEmail { get; set; }
+    public string Status { get; set; } // "pending", "completed"
+}
+
+// ✅ GOOD — FKs to User, enum status, audit fields
+public class Order
+{
+    public int Id { get; set; }
+    public int BuyerId { get; set; }
+    public int SellerId { get; set; }
+    public User Buyer { get; set; }
+    public User Seller { get; set; }
+    public OrderStatus Status { get; set; }
+    public DateTime CreatedAt { get; set; }
+    public DateTime? UpdatedAt { get; set; }
+}
+
+public enum OrderStatus { Pending, Confirmed, Completed, Cancelled }
+```
+
+## Repositories & Migrations
+
+- Repositories operate on entities, not DTOs; map to DTOs in the service layer.
+- Migrations should reflect intentional schema changes — review generated SQL before applying.

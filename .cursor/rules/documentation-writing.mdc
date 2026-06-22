@@ -1,0 +1,123 @@
+---
+description: Documentation voice and writing standards for README, wiki, reports, and profile copy
+alwaysApply: true
+---
+
+# Documentation Writing Convention
+
+Apply when writing or rewriting documentation for Kaiminn's projects: wiki pages, README files, reports, portfolio text, or LinkedIn/profile copy.
+
+Goal: make AI-assisted writing clear, specific, useful, and close to how Kaiminn would actually explain things — not to hide AI use.
+
+## Core rule
+
+Write like a practical student developer explaining real work.
+
+Prefer: clear wording; short to medium sentences; real details (tools, file names, commands, dates, constraints, examples); honest uncertainty when information is missing; simple explanations someone can act on.
+
+Avoid: inflated language; generic motivation paragraphs; fake confidence; corporate or academic filler; polished conclusions that say nothing new.
+
+## Voice
+
+- Practical, direct, slightly conversational
+- Grounded in what was actually done
+- Friendly but not performative
+- Technical enough to be useful
+- Honest about limits, assumptions, and missing information
+
+Sound like someone learning, building, testing, and explaining the real process — not a marketing page.
+
+## Before writing
+
+Check:
+
+1. What is the document for?
+2. Who will read it?
+3. What real work, tool, command, file, project, bug, or decision is being documented?
+4. What details are known from the codebase, wiki, source, or user message?
+5. What is missing and should not be invented?
+
+If important facts are missing, ask or write with a clear assumption. Do not invent metrics, results, dates, user counts, performance gains, company names, or technologies.
+
+## Structure
+
+Use the smallest structure that makes the document easy to scan.
+
+Good: one clear title; short sections; bullets for checklists, facts, steps, or comparisons; code blocks for commands, config, prompts, and exact text; links to relevant files or wiki pages.
+
+Avoid: repetitive Overview / Key features / Benefits / Conclusion templates; unnecessary tables; long "in conclusion" endings; repeated three-item lists; bolding every important phrase; dramatic headings.
+
+## Sentence rules
+
+Mix short sentences for important points, medium sentences for explanation, and occasional natural fragments in notes or checklists.
+
+Avoid overusing: moreover, furthermore, in addition, consequently, therefore, it is important to note, it is worth noting, in today's world, in conclusion.
+
+Use natural transitions: "The issue is...", "The fix is...", "This matters because...", "For this project...", "In this vault...", "When writing this up...".
+
+## Words to avoid
+
+Unless genuinely needed: delve, tapestry, landscape, crucial, pivotal, robust, vibrant, meticulous, groundbreaking, renowned, showcase, underscore, highlight, enhance, foster, valuable insights, broader trends, enduring legacy, serves as a testament, plays a vital role.
+
+```text
+Bad: This project showcases a robust solution that plays a crucial role in enhancing productivity.
+Good: This project backs up game save files and restores them when needed.
+```
+
+## Specificity
+
+Every useful paragraph needs at least one concrete detail: file path, command, date, technology, user action, error message, source name, constraint, trade-off, before/after state, or decision reason.
+
+If a paragraph could apply to almost any project, rewrite it.
+
+## Accuracy
+
+Do not overclaim. Use careful wording: "appears to", "based on the current notes", "the source says", "the current workflow is", "this should", "this may", "not yet verified".
+
+Use stronger wording only with clear evidence: "the command failed because...", "the file exists at...", "the wiki page records...".
+
+Never write fake certainty to sound complete.
+
+## Personal voice (as Kaiminn)
+
+Good: "I use AI to move faster, but I still want to understand what the code is doing. The useful part is not letting AI replace my thinking, but using it to organize messy ideas and help me build more."
+
+Avoid: "As a passionate and innovative developer, I leverage cutting-edge AI technologies to unlock transformative productivity..."
+
+For bilingual notes, preserve useful English/Chinese phrasing. Do not force everything into polished English.
+
+## By document type
+
+**README:** what the project does, why it exists, setup steps, commands, important folders, known limitations, next steps. No sales copy or generic feature lists without usage details.
+
+**Wiki:** read `index.md` first; read relevant wiki pages; connect new notes to existing pages; write durable summaries; update `index.md`, `wiki/overview.md`, and `log.md` when structure changes.
+
+**Reports:** clear academic wording, still human — what was studied, evidence used, assumptions, known vs undisclosed, practical implications. No filler like "shed light on the intricate landscape."
+
+**Profile / LinkedIn:** truthful, specific — current role or study status, real technologies, projects, internship tasks, practical direction. No exaggerated seniority, impact, user numbers, or company outcomes.
+
+## Rewrite pass
+
+When a draft sounds too AI-written:
+
+```text
+Rewrite this in Kaiminn's documentation voice: practical, clear, slightly conversational, and specific. Remove AI-style patterns such as inflated importance, generic claims, over-polished transitions, vague authority, and unnecessary conclusion language. Keep the facts accurate. Add concrete details from the available context. If details are missing, do not invent them; mark the assumption or ask for clarification.
+```
+
+Shorter:
+
+```text
+Make this sound like a real student developer wrote it. Keep it simple, specific, and honest. Remove corporate or AI-sounding words.
+```
+
+## Final self-check
+
+- Does this sound like Kaiminn could actually say it?
+- Does each section have a purpose?
+- Are claims backed by real context?
+- Did I remove inflated words and filler transitions?
+- Did I avoid fake metrics or fake certainty?
+- Did I preserve useful technical details?
+- Did I update wiki/index/log if this became durable vault knowledge?
+
+If not, revise before finishing.

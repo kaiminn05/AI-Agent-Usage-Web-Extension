@@ -1,0 +1,43 @@
+---
+description: ASP.NET Core Web API backend conventions
+globs: **/*.cs
+alwaysApply: false
+---
+
+# Backend Rules
+
+## API Design
+
+- Follow ASP.NET Core Web API conventions and RESTful API design.
+- Use meaningful C# names for classes, methods, and properties.
+- Return suitable HTTP status codes (`200`, `201`, `204`, `400`, `404`, `409`, `500`).
+
+## Layering
+
+- Keep controllers thin — route requests, validate input, call services, return responses.
+- Put business logic in services, not controllers.
+- Use DTOs for request and response payloads.
+- Do not expose Entity Framework models directly to the frontend.
+
+## Data Access
+
+- Use `async`/`await` for all database operations.
+
+## Validation & Errors
+
+- Validate all request data (data annotations, FluentValidation, or model binding).
+- Handle exceptions properly; map domain errors to appropriate HTTP responses.
+
+```csharp
+// ❌ BAD — EF entity returned, sync DB call, logic in controller
+[HttpGet("{id}")]
+public Product Get(int id) => _context.Products.Find(id);
+
+// ✅ GOOD — DTO response, async service, thin controller
+[HttpGet("{id}")]
+public async Task<ActionResult<ProductDto>> GetProduct(int id, CancellationToken ct)
+{
+    var product = await _productService.GetByIdAsync(id, ct);
+    return product is null ? NotFound() : Ok(product);
+}
+```

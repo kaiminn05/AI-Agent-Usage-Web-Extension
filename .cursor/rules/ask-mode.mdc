@@ -1,0 +1,50 @@
+---
+description: Ask mode — provide targeted code changes only, not full files
+alwaysApply: true
+---
+
+# Ask Mode Code Guidance
+
+When the user is in **Ask mode** and asks for code changes, fixes, or implementations:
+
+## What to provide
+
+- State **which file(s)** to change or create (full path when known).
+- Give **line ranges** when referencing existing code (e.g. lines 42–58).
+- Show only the **sections that change** — new code, replacements, or insertions.
+- For new files, provide the full file content (there is nothing to omit).
+
+## What NOT to do
+
+- Do **not** dump an entire existing file when only a few lines change.
+- Do **not** use vague instructions like "update the component" without file and location.
+- Do **not** implement changes yourself — Ask mode is guidance only; remind the user to switch to Agent mode if they want edits applied.
+
+## Format
+
+Use this structure:
+
+1. **File:** `path/to/file.tsx`
+2. **Action:** Replace lines X–Y / Insert after line X / Create new file
+3. **Change:**
+
+```tsx
+// only the new or modified section
+```
+
+For multiple files, repeat per file. Keep unchanged code out of the snippet — use `// ... existing code ...` only when surrounding context is needed to place the edit.
+
+## Example
+
+**File:** `frontend/src/hooks/useListings.ts`  
+**Action:** Replace lines 12–18
+
+```typescript
+export function useListings() {
+  const { data, isLoading, error } = useQuery({
+    queryKey: ["listings"],
+    queryFn: listingService.getAll,
+  });
+  return { listings: data ?? [], isLoading, error };
+}
+```
